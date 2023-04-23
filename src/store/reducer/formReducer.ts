@@ -14,9 +14,9 @@ import { calcTotal } from "../../common/fn/fn";
     phone: "",
     operator: 'Оператор 1',
     router: {name: 'Аренда 99 ₽/мес.', cost: 99, id: 1},
-    internet: {count: '5 гб', cost: 60, id:1},
-    sms: {count: '0 смс', cost: 60, id:1},
-    minutes: {count: '200', cost: 60, id:1},
+    internet: {name: '5 гб', cost: 60, id:1},
+    sms: {name: '0 смс', cost: 60, id:1},
+    minutes: {name: '200', cost: 60, id:1},
     sum: 0,
   };
   
@@ -57,7 +57,7 @@ import { calcTotal } from "../../common/fn/fn";
 
       countTotalPrice(state){
         state.sum = calcTotal([state.minutes, state.internet, state.router, state.sms])
-      }
+      },
      
     },
   });
@@ -69,7 +69,8 @@ import { calcTotal } from "../../common/fn/fn";
     setInternet,
     setSms,
     setMinutes,
-    countTotalPrice
+    countTotalPrice,
+  
   } = formDataSlice.actions;
   
   export default formDataSlice.reducer;
