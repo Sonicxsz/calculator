@@ -37,10 +37,10 @@ export function requiestData():Promise<any> {
         sms: {name: '150', cost: 130, id:4},
         minutes: {name: '200', cost: 60, id:1},
         sum: 0,
-      }
-    return  new Promise((res, rej) => {
+    }
+    return  new Promise((res) => {
         setTimeout(() => {
             res(JSON.stringify(data))
         }, 500)
-      })
+    })
 }

@@ -8,13 +8,13 @@ export interface IFormDataSliceState {
     sum: number;
   }
   
-  export type ISetPhonePayload = string;
-  export type ISetOperatorPayload = string;
-  export type ISetRouterPayload = rangePayload;
-  export type ISetInternetPayload = rangePayload;
-  export type ISetSmsPayload = rangePayload;
-  export type ISetMinutesPayload = rangePayload;
-  export type ISetSumPayload = number;
+export type ISetPhonePayload = string;
+export type ISetOperatorPayload = string;
+export type ISetRouterPayload = rangePayload;
+export type ISetInternetPayload = rangePayload;
+export type ISetSmsPayload = rangePayload;
+export type ISetMinutesPayload = rangePayload;
+export type ISetSumPayload = number;
   
 
 
