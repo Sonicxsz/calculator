@@ -4,7 +4,7 @@ import { setRouter } from '../../store/reducer/formReducer'
 const check = [{name: 'Аренда 99 ₽/мес.', cost: 99, id: 1}, {name:'Выкупить 2 600 ₽', cost: 200, id: 2}]
 
 function CheckBox() {
-  const checked = useAppSelector(state => state.formDataSlice.router)
+  const checked = useAppSelector(state => state.formDataSlice.data.router)
   const dispatch = useAppDispatch()
   return (
     <div className={styles.container}>

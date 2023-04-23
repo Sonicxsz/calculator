@@ -1,15 +1,15 @@
 import styles from './range.module.css'
 
-import {useState, useEffect} from 'react'
 function Range({label, values, dispatcher, actualValue}:IRangeProps) {
-    const [value, setValue] = useState(0)
 
-    useEffect(() => {
-      const newValue = values.filter(i => i.id === value)
-      if(newValue.length){
+  const handleChange = (e:Event) => {
+    const target = e.target as HTMLInputElement
+    const newValue = values.filter(i => i.id == target.value)
+    if(newValue.length){
           dispatcher(newValue[0])
-      }
-  }, [value])
+    }
+  }
+
   return (
    <div className={styles.container}>
      <h2 className={styles.title}>{label}</h2>
@@ -19,10 +19,10 @@ function Range({label, values, dispatcher, actualValue}:IRangeProps) {
         min="1"
         max="4"
         step="1"
-        value={value}
+        value={actualValue.id}
         className={styles.slider}
         id="range"
-        onChange={(e) => setValue(parseInt(e.target.value))}
+        onChange={(e) => handleChange(e)}
       />
       <div className={styles.sliderValue}>
         {values.map(i => {

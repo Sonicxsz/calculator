@@ -10,14 +10,22 @@ import { IFormDataSliceState,
 import { calcTotal } from "../../common/fn/fn";
   
   
-  const initialState: IFormDataSliceState = {
-    phone: "",
-    operator: 'Оператор 1',
-    router: {name: 'Аренда 99 ₽/мес.', cost: 99, id: 1},
-    internet: {name: '5 гб', cost: 60, id:1},
-    sms: {name: '0 смс', cost: 60, id:1},
-    minutes: {name: '200', cost: 60, id:1},
-    sum: 0,
+  const initialState: {data: IFormDataSliceState, valid: {
+    phone: boolean, operator: boolean
+  }} = {
+    data: {
+      phone: "",
+      operator: 'Оператор 1',
+      router: {name: 'Аренда 99 ₽/мес.', cost: 99, id: 1},
+      internet: {name: '5 гб', cost: 60, id:1},
+      sms: {name: '50', cost: 80, id:2},
+      minutes: {name: '200', cost: 60, id:1},
+      sum: 0,
+    },
+    valid: {
+      phone: false,
+      operator: false
+    }
   };
   
   const formDataSlice = createSlice({
@@ -25,40 +33,43 @@ import { calcTotal } from "../../common/fn/fn";
     initialState,
     reducers: {
       setPhone(state, action: PayloadAction<ISetPhonePayload>) {
-        state.phone = action.payload;
+        state.data.phone = action.payload;
       },
       setOperator(state, action: PayloadAction<ISetOperatorPayload>) {
-        state.operator = action.payload;
-        state.sum = calcTotal([state.minutes, state.internet, state.router, state.sms])
+        state.data.operator = action.payload;
+        state.data.sum = calcTotal([state.data.minutes, state.data.internet, state.data.router, state.data.sms])
     
       },
       setRouter(state, action: PayloadAction<ISetRouterPayload>) {
-        state.router = action.payload;
-        state.sum = calcTotal([state.minutes, state.internet, state.router, state.sms])
+        state.data.router = action.payload;
+        state.data.sum = calcTotal([state.data.minutes, state.data.internet, state.data.router, state.data.sms])
       },
     
       setInternet(state, action: PayloadAction<ISetInternetPayload>) {
-        state.internet = action.payload;
-        state.sum = calcTotal([state.minutes, state.internet, state.router, state.sms])
+        state.data.internet = action.payload;
+        state.data.sum = calcTotal([state.data.minutes, state.data.internet, state.data.router, state.data.sms])
 
 
       },
       setSms(state, action: PayloadAction<ISetSmsPayload>) {
-        state.sms = action.payload;
-        state.sum = calcTotal([state.minutes, state.internet, state.router, state.sms])
+        state.data.sms = action.payload;
+        state.data.sum = calcTotal([state.data.minutes, state.data.internet, state.data.router, state.data.sms])
 
 
       },
       setMinutes(state, action: PayloadAction<ISetMinutesPayload>) {
-        state.minutes = action.payload;
-        state.sum = calcTotal([state.minutes, state.internet, state.router, state.sms])
+        state.data.minutes = action.payload;
+        state.data.sum = calcTotal([state.data.minutes, state.data.internet, state.data.router, state.data.sms])
       
       },
 
       countTotalPrice(state){
-        state.sum = calcTotal([state.minutes, state.internet, state.router, state.sms])
+        state.data.sum = calcTotal([state.data.minutes, state.data.internet, state.data.router, state.data.sms])
       },
-     
+     setData(state, action){
+        state.data = action.payload
+        state.data.sum = calcTotal([state.data.minutes, state.data.internet, state.data.router, state.data.sms])
+      }
     },
   });
   
@@ -70,6 +81,7 @@ import { calcTotal } from "../../common/fn/fn";
     setSms,
     setMinutes,
     countTotalPrice,
+    setData
   
   } = formDataSlice.actions;
   

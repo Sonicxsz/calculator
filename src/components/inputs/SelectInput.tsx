@@ -4,7 +4,7 @@ import { setOperator } from '../../store/reducer/formReducer'
 const selectData = [{name:'Оператор 1', id: 1}, {name:'Оператор 2', id: 2}, {name:'Оператор 3', id: 3}]
 
 function SelectInput() {
-  const activeValue = useAppSelector(state => state.formDataSlice.operator) 
+  const activeValue = useAppSelector(state => state.formDataSlice.data.operator) 
   const dispatch = useAppDispatch()
  
   return (

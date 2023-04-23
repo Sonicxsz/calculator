@@ -5,9 +5,10 @@ import CheckBox from './components/inputs/checkBox'
 import MainButton from './components/mainButton/MainButton'
 import Range from './components/range/Range'
 import { useAppDispatch, useAppSelector } from './common/hooks/useRedux'
-import { setMinutes, setInternet, setSms, countTotalPrice } from './store/reducer/formReducer'
+import { setMinutes, setInternet, setSms, countTotalPrice,setData  } from './store/reducer/formReducer'
 import { rangeValueT } from './components/range/Range'
 import { useEffect } from 'react'
+import { requiestData } from './common/fn/fn'
 
 const rangeMinutes = [
   {name: '200', cost: 60, id:1},
@@ -34,10 +35,13 @@ const rangeSMS = [
 
 function App() {
   const dispatch = useAppDispatch()
+  const minutes = useAppSelector(state => state.formDataSlice.data.minutes)
+  const sms = useAppSelector(state => state.formDataSlice.data.sms)
+  const internet = useAppSelector(state => state.formDataSlice.data.internet)
+
 
   useEffect(() => {
-
-    dispatch(countTotalPrice())
+    requiestData().then(data => JSON.parse(data)).then(data => dispatch(setData(data)))
   },[])
   
   return (
@@ -45,9 +49,9 @@ function App() {
       <h1 className={styles.title}>Настройте Тариф</h1>
       <PhoneInput  />
       <SelectInput />
-      <Range values={rangeMinutes} label='Минуты'  dispatcher={(item:rangeValueT) => dispatch(setMinutes(item))}/>
-      <Range values={rangeInternet} label='Интернет'  dispatcher={(item:rangeValueT) => dispatch(setInternet(item))}/>
-      <Range values={rangeSMS} label='Смс'  dispatcher={(item:rangeValueT) => dispatch(setSms(item))}/>
+      <Range actualValue={minutes} values={rangeMinutes} label='Минуты'  dispatcher={(item:rangeValueT) => dispatch(setMinutes(item))}/>
+      <Range actualValue={internet} values={rangeInternet} label='Интернет'  dispatcher={(item:rangeValueT) => dispatch(setInternet(item))}/>
+      <Range actualValue={sms} values={rangeSMS} label='Смс'  dispatcher={(item:rangeValueT) => dispatch(setSms(item))}/>
       <CheckBox />
       <MainButton />
     </form>

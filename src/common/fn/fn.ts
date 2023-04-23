@@ -25,3 +25,22 @@ export function showAlert(data:IFormDataSliceState) {
     })
     alert(jsonData)
 }
+
+
+
+export function requiestData():Promise<any> {
+    const data = {
+        phone: "",
+        operator: 'Оператор 1',
+        router: {name: 'Аренда 99 ₽/мес.', cost: 99, id: 1},
+        internet: {name: '15', cost: 80, id:2},
+        sms: {name: '150', cost: 130, id:4},
+        minutes: {name: '200', cost: 60, id:1},
+        sum: 0,
+      }
+    return  new Promise((res, rej) => {
+        setTimeout(() => {
+            res(JSON.stringify(data))
+        }, 500)
+      })
+}

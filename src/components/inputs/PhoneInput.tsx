@@ -6,15 +6,14 @@ import { useState } from 'react';
 
 function PhoneInput() {
   const [touch, setTouch] = useState(false)
-  const phone = useAppSelector(state => state.formDataSlice.phone)
+  const phone = useAppSelector(state => state.formDataSlice.data.phone)
   const dispatch = useAppDispatch()
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target) {
         if(!touch) setTouch(true)
         const formattedPhoneNumber = formatPhoneNumber(e.target.value, e);
-        dispatch(setPhone(formattedPhoneNumber))
-        
+        dispatch(setPhone(formattedPhoneNumber))    
     }
   };
 
