@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    padding: 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title{
+    font-weight: 700;
+    font-size: 64px;
+}

@@ -1,0 +1,22 @@
+
+:root {
+  --purpleColor: #7A5CFA;
+  --BlackColor: #000000;
+  --bgColor: #EEF2F4;
+  --whiteColor: #EEF2F4;
+  --int: 'Inter', sans-serif;
+  --noto: 'Noto Sans', sans-serif;
+}
+
+
+*{
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: var(--bgColor);
+}

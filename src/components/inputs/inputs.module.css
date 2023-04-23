@@ -1,0 +1,111 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    margin-bottom: 40px;
+}
+.inputWrapper{
+    width: 368px;
+    height: 60px;
+    border: 1px solid #B8C6CF;
+    border-radius: 8px;
+    padding: 0 16px;
+    font-weight: 400;
+    font-size: 24px;
+    font-family: var(--noto);
+    margin-bottom: 10px;
+}
+
+.title{
+    font-family: var(--int);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.require{
+    font-weight: 400;
+    font-size: 12px;
+    color: #86969C;
+}
+
+.checkWrapper{
+    display: flex;
+    gap: 15px;
+}
+
+.description{
+    font-size: 24px;
+    line-height: 24px;
+}
+.error{
+    color: #EB5757;
+}
+.wrapper {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .wrapper input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .mark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-color: #ffffff;
+    border: 1px solid #B8C6CF;
+    border-radius: 5px;
+  }
+
+  .mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .wrapper:hover input ~ .mark {
+    background-color: var(--purpleColor);
+  }
+  
+  .wrapper input:checked ~ .mark {
+    background-color: var(--purpleColor);
+  }
+  
+  .wrapper:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .wrapper input:checked ~ .mark:after {
+    display: block;
+  }
+  
+  .wrapper .mark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
