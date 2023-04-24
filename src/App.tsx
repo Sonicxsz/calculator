@@ -29,9 +29,9 @@ function App() {
             <h1 className={styles.title}>Настройте Тариф</h1>
             <PhoneInput  />
             <SelectInput />
-            <Range actualValue={minutes} values={rangeMinutes} label='Минуты'  dispatcher={(item:rangeValueT) => dispatch(setMinutes(item))}/>
-            <Range actualValue={internet} values={rangeInternet} label='Интернет'  dispatcher={(item:rangeValueT) => dispatch(setInternet(item))}/>
-            <Range actualValue={sms} values={rangeSMS} label='Смс'  dispatcher={(item:rangeValueT) => dispatch(setSms(item))}/>
+            <Range color='#000000' actualValue={minutes} values={rangeMinutes} label='Минуты'  dispatcher={(item:rangeValueT) => dispatch(setMinutes(item))}/>
+            <Range color='#7A5CFA' actualValue={internet} values={rangeInternet} label='Интернет'  dispatcher={(item:rangeValueT) => dispatch(setInternet(item))}/>
+            <Range color='#7A5CFA' actualValue={sms} values={rangeSMS} label='Смс'  dispatcher={(item:rangeValueT) => dispatch(setSms(item))}/>
             <CheckBox />
             <MainButton />
         </form>
